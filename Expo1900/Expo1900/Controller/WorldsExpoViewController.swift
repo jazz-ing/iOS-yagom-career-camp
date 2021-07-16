@@ -48,11 +48,42 @@ extension WorldsExpoViewController {
     }
     
     private func bind(with introductionContents: ExpoIntroduction) {
-        titleLabel.text = introductionContents.title
-        visitorCountLabel.text = String(introductionContents.visitors)
-        locationLabel.text = introductionContents.location
-        durationLabel.text = introductionContents.duration
+        titleLabel.text = addNewLine(to: introductionContents.title)
+        visitorCountLabel.text = [addCountingUnit, addColonPrefix].reduce(addThousandUnitComma(to: introductionContents.visitors)) {
+            $1($0)
+        }
+        locationLabel.text = addColonPrefix(to: introductionContents.location)
+        durationLabel.text = addColonPrefix(to: introductionContents.duration)
         descriptionTextView.text = introductionContents.description
+    }
+    
+    private func addColonPrefix(to sentence: String) -> String {
+        let prefix = ": "
+        return prefix + sentence
+    }
+    
+    private func addCountingUnit(to sentence: String) -> String {
+        let countingUnit = " 명"
+        return sentence + countingUnit
+    }
+    
+    private func addNewLine(to sentence: String) -> String {
+        let openingParenthesis: Character = "("
+        var sentence = sentence
+        if let lineBreakingIndex = sentence.firstIndex(of: openingParenthesis) {
+            let newline: Character = "\n"
+            sentence.insert(newline, at: lineBreakingIndex)
+        }
+        return sentence
+    }
+    
+    private func addThousandUnitComma(to number: UInt) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        if let formattedNumber = numberFormatter.string(for: number) {
+            return formattedNumber
+        }
+        return number.description
     }
 }
 
