@@ -19,6 +19,7 @@ class WorldsExpoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         queryData()
+        navigationController?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,5 +53,16 @@ extension WorldsExpoViewController {
         locationLabel.text = introductionContents.location
         durationLabel.text = introductionContents.duration
         descriptionTextView.text = introductionContents.description
+    }
+}
+
+//MARK:- Fix Orientation
+extension WorldsExpoViewController: UINavigationControllerDelegate {
+    func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        if navigationController.visibleViewController == self {
+            return .portrait
+        } else {
+            return .all
+        }
     }
 }
