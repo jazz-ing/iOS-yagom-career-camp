@@ -58,11 +58,11 @@ extension WorldsExpoViewController {
 
 //MARK:- Fix Orientation
 extension WorldsExpoViewController: UINavigationControllerDelegate {
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .portrait
+    }
+    
     func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
-        if navigationController.visibleViewController == self {
-            return .portrait
-        } else {
-            return .all
-        }
+        return navigationController.visibleViewController?.supportedInterfaceOrientations ?? .all
     }
 }
