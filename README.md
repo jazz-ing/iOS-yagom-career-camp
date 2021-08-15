@@ -1,16 +1,4 @@
-## iOS 커리어 스타터 캠프
-
-### 은행 매니저 프로젝트 저장소
-
-- 이 저장소를 자신의 저장소로 fork하여 프로젝트를 진행합니다
-
-### Step2 UML
-
-![은행창구매니저UML](https://user-images.githubusercontent.com/34529917/128467556-38ed7eee-2dca-433d-84af-cad2a6054f1d.png)
-
-### Step3 UML
-
-![은행창구매니저UML-Step3 UML](https://user-images.githubusercontent.com/34529917/128471314-305aab36-1177-4223-8d66-5622939f216a.png)
+#### iOS 커리어 스타터 캠프
 
 # 💷 은행창구 매니저 프로젝트
 **프로젝트 기간: 2021.07.26~2021.08.06**
@@ -345,3 +333,9 @@ func letClerkWork(_ loanWorkTime: Double) {
 - `loanQueue`와 `depositQueue`가 모두 실행이 끝났을 때 `bankManager.start()`의 실행이 완료되도록 로직을 구현하지 못했었다. 이로 인해 `main` 함수 내부에서 `bankManager.start()`가 끝나기 전에 while문이 반복되는 문제가 발생하였다.
 - DispatchGroup에 `wait()`메서드를 활용해 `bankManager.start()`가 종료되어야 다음 실행으로 넘어가도록 처리해주어 해당 문제를 해결하였다. 그러나 이렇게 할 경우, 비동기 처리가 되지 않는 문제가 발생하는데 이를 해결하지 못하였다.
 - 해당 문제를 해결하자 업무 마감을 알리는 `notifyClosing()`이 `takeAnswer`보다 나중에 실행되는 문제가 발생하였다. 이전에는 `loanGroup.notify()`메소드를 통해 DispatchGroup의 실행 종료 시점에 `notifyClosing()`메서드를 실행하는 방식으로 구현하였으나 `notifyClosing()`메서드를 `loanGroup.notify()`를 활용하지 않고 `BankManager`의 `start()` 메서드로 옮겨주어 해결하였다.
+    
+    
+ 
+### Step2 UML
+
+![은행창구매니저UML](https://user-images.githubusercontent.com/34529917/128467556-38ed7eee-2dca-433d-84af-cad2a6054f1d.png)
