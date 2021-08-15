@@ -336,6 +336,6 @@ func letClerkWork(_ loanWorkTime: Double) {
     
     
  
-#### Step2 UML
-
+#### 참고사항
+**Step2 UML**
 ![은행창구매니저UML](https://user-images.githubusercontent.com/34529917/128467556-38ed7eee-2dca-433d-84af-cad2a6054f1d.png)
