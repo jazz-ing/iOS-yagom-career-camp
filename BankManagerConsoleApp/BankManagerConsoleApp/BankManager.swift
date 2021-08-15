@@ -27,6 +27,7 @@ extension BankManager {
         let totalCustomer = gatherCustomers()
         formWaitingLine(from: totalCustomer)
         askWork()
+        bank.notifyClosing(totalCustomer: 1, totalTime: "1")
     }
     
     func end() {

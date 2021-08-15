@@ -11,7 +11,7 @@ class Bank {
     //MARK: Properties
     private var bankClerk: BankClerk
     private var waitingLine = Queue<Customer>()
-    
+
     init(bankClerk: BankClerk = BankClerk()) {
         self.bankClerk = bankClerk
     }
@@ -52,6 +52,7 @@ extension Bank {
                     self.bankClerk.work(for: currentCustomer, during: loanWorkTime)
                     loanGroup.leave()
                 }
+                loanGroup.wait()
             case "예금":
                 depositCustomerNumber += 1
                 depositGroup.enter()
@@ -61,13 +62,10 @@ extension Bank {
                     semaphore.signal()
                     depositGroup.leave()
                 }
+                depositGroup.wait()
             default:
                 print("error")
             }
-        }
-        
-        loanGroup.notify(queue: loanQueue) {
-            self.notifyClosing(totalCustomer: loanCustomerNubmer + depositCustomerNumber, totalTime: "10")
         }
     }
     

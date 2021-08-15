@@ -7,7 +7,7 @@
 import Foundation
 
 //MARK: Properties
-let bank = Bank()
+var bank = Bank()
 var bankManager = BankManager(bank: bank)
 
 //MARK: BankMangerConsoleApp Execute Function
