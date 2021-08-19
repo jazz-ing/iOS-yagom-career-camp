@@ -1,4 +1,8 @@
-# 쥬스 메이커 - Nala, Joey (2A)
+# 쥬스 메이커 프로젝트
+#### 프로젝트 기간 - 2021.06.07 - 2021.06.18
+#### 프로젝트 팀원 - Joey(https://github.com/joey-ful), Nala(https://github.com/jazz-ing)
+
+![juiceMaker](https://user-images.githubusercontent.com/52592748/130000242-dffc3306-651d-4d41-a096-872e5aa23f62.gif)
 
 ## 플로우차트
 
